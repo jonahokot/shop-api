@@ -3,7 +3,7 @@ router = express.Router(),
 Staff = require('../models/Staff');
 
 router.get('/staff/register',(req,res)=>{
-    res.send('staff registration form')
+    res.json('staff registration form')
 })
 
 router.post('/staff/register',async(req,res)=>{
@@ -12,7 +12,7 @@ router.post('/staff/register',async(req,res)=>{
         await newStaff.save();
         res.json({message:"staff sucessfully registered", newStaff});
    } catch (error) {
-        res.status(400).send("staff not registered")
+        res.status(400).json("staff not registered")
    }
 })
 
@@ -21,7 +21,7 @@ router.get('/staff/getlist',async(req,res)=>{
          const staffList = await Staff.find({});
          res.json({message:"list of staff", staffList});
     } catch (error) {
-         res.status(400).send("no staff found")
+         res.status(400).json("no staff found")
     }
 })
 
@@ -30,16 +30,16 @@ router.get('/staff/:id',async(req,res)=>{
          const oneStaff = await Staff.findOne({_id:req.params.id});
          res.json({message:"staff details", oneStaff});
     } catch (error) {
-         res.status(400).send("unable to find staff with that id")
+         res.status(400).json("unable to find staff with that id")
     }
 })
 
 router.delete('/staff/:id',async(req,res)=>{
     try {
-         await Staff.findOne({_id:req.params.id});
+         await Staff.deleteOne({_id:req.params.id});
          res.json({message:"staff has been deleted"});
     } catch (error) {
-         res.status(400).send("unable to delete staff with that id")
+         res.status(400).json("unable to delete staff with that id")
     }
 })
 
@@ -61,7 +61,7 @@ router.patch('/staff/:id',async(req,res)=>{
          );
          res.json({message:"staff details updated succesfully", updatedStaff});
     } catch (error) {
-         res.status(400).send("unable to update staff with that id")
+         res.status(400).json("unable to update staff with that id")
     }
 })
 
