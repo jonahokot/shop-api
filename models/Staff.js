@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
-const facilitatorSchema = new mongoose.Schema({
-    firstName:{type:String, trim:true},
+const staffSchema = new mongoose.Schema({
+    firstname:{type:String, trim:true},
     lastname:{type:String, trim:true},
     email:{type:String, trim:true, unique:true},
     phone:{type:Number},
@@ -9,4 +9,4 @@ const facilitatorSchema = new mongoose.Schema({
     department:{type:String, trim:true},
 })
 
-module.exports = mongoose.model('Facilitator',facilitatorSchema)
+module.exports = mongoose.model('Staff',staffSchema)

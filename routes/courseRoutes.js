@@ -1,6 +1,6 @@
 const express = require('express'),
 router = express.Router(),
-Service = require('../models/Service')
+Course = require('../models/Course')
 
 router.get('/', (req, res) => {
   res.send('It works!');

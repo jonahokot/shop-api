@@ -1,7 +1,7 @@
 const express = require('express'),
 mongoose = require('mongoose'),
 config = require('./config/db')
-facilitatorRoutes = require('./routes/facilitatorRoutes');
+staffRoutes = require('./routes/staffRoutes');
 
 const app = express();
 
@@ -16,7 +16,8 @@ db.on('error',(err)=>{
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
-app.use('/api',facilitatorRoutes)
+
+app.use('/api',staffRoutes)
 
 
 
